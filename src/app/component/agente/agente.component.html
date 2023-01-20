@@ -1,0 +1,55 @@
+<div class="center" style="margin-top: 5%">
+
+    <input #inputFile class="form-control" type="file" required (change)="selectFile($event)"/>
+    <button mat-raised-button color="primary" [disabled]="!selectedFiles" (click)="upload();inputFile.value=''" style="margin-left: 2%;">Upload</button>
+
+    <mat-spinner [mode]="mode" [value]="progress" style="margin-left: 50%;"></mat-spinner>
+    <mat-form-field appearance="fill">
+      <mat-label>Regiões</mat-label>
+      <mat-select [(value)]="siglaSelecinada" (selectionChange)="consultarPorRegiaoEstruturaTabela(siglaSelecinada)">
+        <mat-option *ngFor="let r of regiaoProjection" [value]="r.value">{{r.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <fieldset>
+      <legend>Resultados</legend>
+      <div class="example-container mat-elevation-z8">
+        <div class="example-table-container">
+          <table mat-table [dataSource]="regioesTabela" class="example-table" matSort matSortDisableClear matSortDirection="desc">
+            <ng-container matColumnDef="codigo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Cógido</th>
+              <td mat-cell *matCellDef="let row">{{row.agente.codigo}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="data">
+              <th mat-header-cell *matHeaderCellDef>Data</th>
+              <td mat-cell *matCellDef="let row">{{row.agente.data}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="sigla">
+              <th mat-header-cell *matHeaderCellDef>Sigla</th>
+              <td mat-cell *matCellDef="let row">{{row.sigla}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="geracao">
+              <th mat-header-cell *matHeaderCellDef>Geracao</th>
+              <td mat-cell *matCellDef="let row">{{row.geracao}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="compra">
+              <th mat-header-cell *matHeaderCellDef>Compra</th>
+              <td mat-cell *matCellDef="let row">{{row.compra}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="precoMedio">
+              <th mat-header-cell *matHeaderCellDef>Preco Medio</th>
+              <td mat-cell *matCellDef="let row">{{row.precoMedio}}</td>
+            </ng-container>
+      
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </fieldset>
+</div>

@@ -27,8 +27,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 =======
-# inputXml
 >>>>>>> 9e41a3068419f22cb1fc8ad6196dae0d98c7f053
-# agente-api-front-end
-# agente-api-front-end
 # agente-api-front-end
